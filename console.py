@@ -117,6 +117,7 @@ class HBNBCommand(cmd.Cmd):
         return command.split()
 
 
+
     def do_create(self, args):
         """ Create an object of any class"""
 
@@ -133,14 +134,30 @@ class HBNBCommand(cmd.Cmd):
         KeyArray = []
         ValueArray = []
 
-        for arg in ArgsArray:
-            key, word = arg.split("=")
+        for arg in ArgsArray[1:]:
+            key, value = arg.split("=")
             KeyArray.append(key)
-            ValueArray.append(word)
+
+            # Replace underscores with spaces and escape double quotes
+            value = value.replace("_", " ").strip('"')
+
+            # Check if value is a float
+            if '.' in value:
+                try:
+                    value = float(value)
+                except ValueError:
+                    pass  # value is not a float, do nothing
+
+            # Check if value is an integer
+            elif value.isdigit():
+                value = int(value)
+
+            ValueArray.append(value)
+
         print(KeyArray)
         print(ValueArray)
 
-        new_instance = HBNBCommand.classes[className[0]]()
+        new_instance = HBNBCommand.classes[ClassName]()
 
         storage.save()
         print(new_instance.id)
