@@ -119,16 +119,17 @@ class HBNBCommand(cmd.Cmd):
 
     def do_create(self, args):
         """ Create an object of any class"""
-        className = HBNBCommand.parser(args)
+
         if not args:
             print("** class name missing **")
             return
+        ArgsArray = HBNBCommand.parser(args)
+        ClassName = ArgsArray[0]
 
-        elif className[0] not in HBNBCommand.classes:
+        if ArgsArray[0] not in HBNBCommand.classes:
             print("** class doesn't exist **")
             return
-        ArgsArray = className[1:]
-
+        
         KeyArray = []
         ValueArray = []
 
