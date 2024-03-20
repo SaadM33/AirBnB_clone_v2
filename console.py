@@ -156,7 +156,7 @@ class HBNBCommand(cmd.Cmd):
 
             ValueArray.append(value)
 
-        for i in range(1, len(ArgsArray)):
+        for i in range(0, len(ArgsArray) - 1):
             setattr(new_instance, KeyArray[i], ValueArray[i])
 
         storage.save()
