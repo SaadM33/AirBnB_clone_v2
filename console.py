@@ -130,7 +130,9 @@ class HBNBCommand(cmd.Cmd):
         if ArgsArray[0] not in HBNBCommand.classes:
             print("** class doesn't exist **")
             return
-        
+
+        new_instance = HBNBCommand.classes[ClassName]()
+
         KeyArray = []
         ValueArray = []
 
@@ -154,10 +156,8 @@ class HBNBCommand(cmd.Cmd):
 
             ValueArray.append(value)
 
-        print(KeyArray)
-        print(ValueArray)
-
-        new_instance = HBNBCommand.classes[ClassName]()
+        for i in range(1, len(ArgsArray)):
+            setattr(new_instance, KeyArray[i], ValueArray[i])
 
         storage.save()
         print(new_instance.id)
