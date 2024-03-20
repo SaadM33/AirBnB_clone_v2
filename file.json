@@ -167,5 +167,19 @@
         "haa": 3.2,
         "name": "ama ma",
         "__class__": "Place"
+    },
+    "State.1a25503d-174c-496f-aa2e-367ddd5eea36": {
+        "id": "1a25503d-174c-496f-aa2e-367ddd5eea36",
+        "created_at": "2024-03-20T00:36:51.694693",
+        "updated_at": "2024-03-20T00:36:51.694706",
+        "name": "California",
+        "__class__": "State"
+    },
+    "State.ab5d4167-ff0a-4361-94c8-595a07a0c79c": {
+        "id": "ab5d4167-ff0a-4361-94c8-595a07a0c79c",
+        "created_at": "2024-03-20T00:36:51.697766",
+        "updated_at": "2024-03-20T00:36:51.697774",
+        "name": "Nevada",
+        "__class__": "State"
     }
 }
