@@ -48,35 +48,19 @@ class DBStorage:
 
     def all(self, cls=None):
         """ Query all classes or specific one by ID"""
-        allClasses = [User, Place, State, City, Amenity, Review]
-        result = {}
-
-        if cls is not None:
-            if id is not None:
-                obj = self.__session.query(cls).get(id)
-                if obj is not None:
-                    ClassName = obj.__class__.__name__
-                    keyName = ClassName + "." + str(obj.id)
-                    result[keyName] = obj
-            else:
-                for obj in self.__session.query(cls).all():
-                    ClassName = obj.__class__.__name__
-                    keyName = ClassName + "." + str(obj.id)
-                    result[keyName] = obj
+        objects = {}
+        if cls:
+            query = self.__session.query(cls)
+            for obj in query:
+                key = "{}.{}".format(type(obj).__name__, obj.id)
+                objects[key] = obj
         else:
-            for clss in allClasses:
-                if id is not None:
-                    obj = self.__session.query(clss).get(id)
-                    if obj is not None:
-                        ClassName = obj.__class__.__name__
-                        keyName = ClassName + "." + str(obj.id)
-                        result[keyName] = obj
-                else:
-                    for obj in self.__session.query(clss).all():
-                        ClassName = obj.__class__.__name__
-                        keyName = ClassName + "." + str(obj.id)
-                        result[keyName] = obj
-        return result
+            for cls in [User, State, City, Amenity, Place, Review]:
+                query = self.__session.query(cls)
+                for obj in query:
+                    key = "{}.{}".format(type(obj).__name__, obj.id)
+                    objects[key] = obj
+        return objects
 
     def save(self):
         """Commit all changes of the current database session."""
