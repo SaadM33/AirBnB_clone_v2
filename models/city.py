@@ -10,6 +10,7 @@ from os import getenv
 
 storage_type = getenv("HBNB_TYPE_STORAGE")
 
+
 class City(BaseModel, Base):
     """ The city class, contains state ID and name """
 
@@ -22,4 +23,3 @@ class City(BaseModel, Base):
     else:
         name = ""
         state_id = ""
-
