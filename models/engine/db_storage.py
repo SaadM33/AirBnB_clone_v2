@@ -19,8 +19,8 @@ class DBStorage:
     __engine = None
     __session = None
 
-    def __init__(self):
-        """Initialize DBStorage."""
+    """def __init__(self):
+        
 
         user = getenv("HBNB_MYSQL_USER")
         password = getenv("HBNB_MYSQL_PWD")
@@ -31,7 +31,7 @@ class DBStorage:
             f"mysql+mysqldb://{user}.{password}@localhost/{db}",
             pool_pre_ping=True)
         if env == "test":
-            Base.metadata.drop_all(self.__engine)
+            Base.metadata.drop_all(self.__engine)"""
 
     def reload(self):
         """Reload objects from the database."""
