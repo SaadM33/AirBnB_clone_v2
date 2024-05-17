@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """ module doc
 """
-from fabric.operations import task, local
+from fabric.api import task, local
 from datetime import datetime
 
 
