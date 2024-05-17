@@ -8,7 +8,7 @@ from datetime import datetime
 @task
 def do_pack():
     """ method doc
-        sudo fab -f 1-pack_web_static.py do_pack
+        sudo fab -f 1-p ack_web_static.py do_pack
     """
     formatted_dt = datetime.now().strftime('%Y%m%d%H%M%S')
     mkdir = "mkdir -p versions"
